@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>StockStream.Domain</RootNamespace>
+  </PropertyGroup>
+</Project>
