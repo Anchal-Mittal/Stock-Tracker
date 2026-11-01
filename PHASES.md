@@ -15,7 +15,7 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - [x] **Phase 9: WorkerEngine Poll Loop & 4-Process FleetSupervisor** — Implement non-blocking store lease round-robin in WorkerEngine and 4-OS-process FleetSupervisor with crash auto-restart.
 - [x] **Phase 10: Unpooled Npgsql Session & Idempotent Schema Migrator** — Bind each worker to a dedicated physical TCP connection (Pooling = false) and run idempotent additive DDL migrations under an advisory lock.
 - [x] **Phase 11: PostgreSQL Session-Level Advisory Lease Adapter** — Implement non-blocking per-store advisory locking via pg_try_advisory_lock and pg_advisory_unlock.
-- [ ] **Phase 12: Transactional Repository with REPEATABLE READ & CAS Writes** — Implement consistent store stream reads and atomic compare-and-swap (CAS) transactions updating store_stock, apply_log, and sync_store_state.
+- [x] **Phase 12: Transactional Repository with REPEATABLE READ & CAS Writes** — Implement consistent store stream reads and atomic compare-and-swap (CAS) transactions updating store_stock, apply_log, and sync_store_state.
 - [ ] **Phase 13: Unified CLI, 7-Invariant Verifier & Hostile Chaos Suite** — Wire DI composition root in Program.cs and build GroundTruthVerifier (7 invariants) and ChaosSuiteRunner (mid-txn kills + poison payloads + skip-to-snapshot).
 - [ ] **Phase 14: xUnit Domain & Application Unit Test Suite** — Add 12 fast, database-free xUnit tests covering out-of-order seqs, duplicates, pending/failed receipts, poison payloads, and skip-to-snapshot recovery.
 - [ ] **Phase 15: Architecture Documentation, Risk Analysis & AI Usage Report** — Complete deliverables with one-command run instructions (README.md), 12-risk failure analysis (DESIGN.md), and transparent AI usage report (AI-USAGE.md).
@@ -102,4 +102,10 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - **Summary**: Implement non-blocking per-store advisory locking via pg_try_advisory_lock and pg_advisory_unlock.
 - **Files Composed**:
   - `src/StockStream.Infrastructure/Locking/PostgresAdvisoryLeaseManager.cs`
+
+### Phase 12: Transactional Repository with REPEATABLE READ & CAS Writes
+- **Commit**: `feat(phase-12): implement PostgresStoreSyncRepository with REPEATABLE READ views and CAS writes`
+- **Summary**: Implement consistent store stream reads and atomic compare-and-swap (CAS) transactions updating store_stock, apply_log, and sync_store_state.
+- **Files Composed**:
+  - `src/StockStream.Infrastructure/Persistence/PostgresStoreSyncRepository.cs`
 
