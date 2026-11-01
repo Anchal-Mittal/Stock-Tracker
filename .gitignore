@@ -1,0 +1,35 @@
+# .NET build & test artifacts
+[Bb]in/
+[Oo]bj/
+**/bin/
+**/obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+out/
+publish/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.nupkg
+*.snupkg
+
+# Node dependencies (used only by provided seed.js)
+node_modules/
+**/node_modules/
+npm-debug.log*
+
+# IDE / OS user-specific files
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.log
+.DS_Store
+Thumbs.db
+__MACOSX/
