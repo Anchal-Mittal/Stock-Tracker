@@ -11,7 +11,7 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - [x] **Phase 5: Pure Domain Stream Planner Service** — Implement zero-I/O StoreStreamPlanner enforcing contiguous seq progression, duplicate ignoring, receipt readiness checks, and skip-to-snapshot recovery.
 - [x] **Phase 6: Segregated Domain Ports (ISP & DIP)** — Define IStoreLeaseManager, ISchemaMigrator, IStoreSyncRepository, and ISyncLogger interfaces in StockStream.Domain.Ports.
 - [x] **Phase 7: Application Options & Structured Logging** — Add environment/CLI configuration binding in ProcessorOptions and structured JSON/console logging in ConsoleSyncLogger.
-- [ ] **Phase 8: StoreBacklogAdvancer Use Case** — Advance a leased store through multiple ready updates per pass by stepping StoreStreamSnapshot in memory after each CAS commit.
+- [x] **Phase 8: StoreBacklogAdvancer Use Case** — Advance a leased store through multiple ready updates per pass by stepping StoreStreamSnapshot in memory after each CAS commit.
 - [ ] **Phase 9: WorkerEngine Poll Loop & 4-Process FleetSupervisor** — Implement non-blocking store lease round-robin in WorkerEngine and 4-OS-process FleetSupervisor with crash auto-restart.
 - [ ] **Phase 10: Unpooled Npgsql Session & Idempotent Schema Migrator** — Bind each worker to a dedicated physical TCP connection (Pooling = false) and run idempotent additive DDL migrations under an advisory lock.
 - [ ] **Phase 11: PostgreSQL Session-Level Advisory Lease Adapter** — Implement non-blocking per-store advisory locking via pg_try_advisory_lock and pg_advisory_unlock.
@@ -75,4 +75,10 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
   - `src/StockStream.Application/StockStream.Application.csproj`
   - `src/StockStream.Application/Configuration/ProcessorOptions.cs`
   - `src/StockStream.Application/Logging/ConsoleSyncLogger.cs`
+
+### Phase 8: StoreBacklogAdvancer Use Case
+- **Commit**: `feat(phase-8): implement StoreBacklogAdvancer use case with in-memory view stepping`
+- **Summary**: Advance a leased store through multiple ready updates per pass by stepping StoreStreamSnapshot in memory after each CAS commit.
+- **Files Composed**:
+  - `src/StockStream.Application/Services/StoreBacklogAdvancer.cs`
 
