@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>StockStream.Application</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StockStream.Domain\StockStream.Domain.csproj" />
+  </ItemGroup>
+</Project>

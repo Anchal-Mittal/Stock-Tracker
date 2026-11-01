@@ -10,7 +10,7 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - [x] **Phase 4: Domain Entities & Discriminated Union Decisions** — Model immutable store update stream entities and exhaustive SyncDecision discriminated union (Idle, WaitForReceipt, SkipBrokenSeq, ApplyUpdate).
 - [x] **Phase 5: Pure Domain Stream Planner Service** — Implement zero-I/O StoreStreamPlanner enforcing contiguous seq progression, duplicate ignoring, receipt readiness checks, and skip-to-snapshot recovery.
 - [x] **Phase 6: Segregated Domain Ports (ISP & DIP)** — Define IStoreLeaseManager, ISchemaMigrator, IStoreSyncRepository, and ISyncLogger interfaces in StockStream.Domain.Ports.
-- [ ] **Phase 7: Application Options & Structured Logging** — Add environment/CLI configuration binding in ProcessorOptions and structured JSON/console logging in ConsoleSyncLogger.
+- [x] **Phase 7: Application Options & Structured Logging** — Add environment/CLI configuration binding in ProcessorOptions and structured JSON/console logging in ConsoleSyncLogger.
 - [ ] **Phase 8: StoreBacklogAdvancer Use Case** — Advance a leased store through multiple ready updates per pass by stepping StoreStreamSnapshot in memory after each CAS commit.
 - [ ] **Phase 9: WorkerEngine Poll Loop & 4-Process FleetSupervisor** — Implement non-blocking store lease round-robin in WorkerEngine and 4-OS-process FleetSupervisor with crash auto-restart.
 - [ ] **Phase 10: Unpooled Npgsql Session & Idempotent Schema Migrator** — Bind each worker to a dedicated physical TCP connection (Pooling = false) and run idempotent additive DDL migrations under an advisory lock.
@@ -67,4 +67,12 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - **Summary**: Define IStoreLeaseManager, ISchemaMigrator, IStoreSyncRepository, and ISyncLogger interfaces in StockStream.Domain.Ports.
 - **Files Composed**:
   - `src/StockStream.Domain/Ports/Ports.cs`
+
+### Phase 7: Application Options & Structured Logging
+- **Commit**: `feat(phase-7): add immutable ProcessorOptions and structured ConsoleSyncLogger`
+- **Summary**: Add environment/CLI configuration binding in ProcessorOptions and structured JSON/console logging in ConsoleSyncLogger.
+- **Files Composed**:
+  - `src/StockStream.Application/StockStream.Application.csproj`
+  - `src/StockStream.Application/Configuration/ProcessorOptions.cs`
+  - `src/StockStream.Application/Logging/ConsoleSyncLogger.cs`
 
