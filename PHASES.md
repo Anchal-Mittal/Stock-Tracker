@@ -17,7 +17,7 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - [x] **Phase 11: PostgreSQL Session-Level Advisory Lease Adapter** — Implement non-blocking per-store advisory locking via pg_try_advisory_lock and pg_advisory_unlock.
 - [x] **Phase 12: Transactional Repository with REPEATABLE READ & CAS Writes** — Implement consistent store stream reads and atomic compare-and-swap (CAS) transactions updating store_stock, apply_log, and sync_store_state.
 - [x] **Phase 13: Unified CLI, 7-Invariant Verifier & Hostile Chaos Suite** — Wire DI composition root in Program.cs and build GroundTruthVerifier (7 invariants) and ChaosSuiteRunner (mid-txn kills + poison payloads + skip-to-snapshot).
-- [ ] **Phase 14: xUnit Domain & Application Unit Test Suite** — Add 12 fast, database-free xUnit tests covering out-of-order seqs, duplicates, pending/failed receipts, poison payloads, and skip-to-snapshot recovery.
+- [x] **Phase 14: xUnit Domain & Application Unit Test Suite** — Add 12 fast, database-free xUnit tests covering out-of-order seqs, duplicates, pending/failed receipts, poison payloads, and skip-to-snapshot recovery.
 - [ ] **Phase 15: Architecture Documentation, Risk Analysis & AI Usage Report** — Complete deliverables with one-command run instructions (README.md), 12-risk failure analysis (DESIGN.md), and transparent AI usage report (AI-USAGE.md).
 
 ## Completed Phase Details
@@ -117,4 +117,11 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
   - `src/StockStream.Cli/Program.cs`
   - `src/StockStream.Cli/Verification/GroundTruthVerifier.cs`
   - `src/StockStream.Cli/Verification/ChaosSuiteRunner.cs`
+
+### Phase 14: xUnit Domain & Application Unit Test Suite
+- **Commit**: `test(phase-14): add 12 xUnit tests for StoreStreamPlanner edge cases and StoreBacklogAdvancer`
+- **Summary**: Add 12 fast, database-free xUnit tests covering out-of-order seqs, duplicates, pending/failed receipts, poison payloads, and skip-to-snapshot recovery.
+- **Files Composed**:
+  - `tests/StockStream.Tests/StockStream.Tests.csproj`
+  - `tests/StockStream.Tests/StoreStreamPlannerTests.cs`
 
