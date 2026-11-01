@@ -12,7 +12,7 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - [x] **Phase 6: Segregated Domain Ports (ISP & DIP)** — Define IStoreLeaseManager, ISchemaMigrator, IStoreSyncRepository, and ISyncLogger interfaces in StockStream.Domain.Ports.
 - [x] **Phase 7: Application Options & Structured Logging** — Add environment/CLI configuration binding in ProcessorOptions and structured JSON/console logging in ConsoleSyncLogger.
 - [x] **Phase 8: StoreBacklogAdvancer Use Case** — Advance a leased store through multiple ready updates per pass by stepping StoreStreamSnapshot in memory after each CAS commit.
-- [ ] **Phase 9: WorkerEngine Poll Loop & 4-Process FleetSupervisor** — Implement non-blocking store lease round-robin in WorkerEngine and 4-OS-process FleetSupervisor with crash auto-restart.
+- [x] **Phase 9: WorkerEngine Poll Loop & 4-Process FleetSupervisor** — Implement non-blocking store lease round-robin in WorkerEngine and 4-OS-process FleetSupervisor with crash auto-restart.
 - [ ] **Phase 10: Unpooled Npgsql Session & Idempotent Schema Migrator** — Bind each worker to a dedicated physical TCP connection (Pooling = false) and run idempotent additive DDL migrations under an advisory lock.
 - [ ] **Phase 11: PostgreSQL Session-Level Advisory Lease Adapter** — Implement non-blocking per-store advisory locking via pg_try_advisory_lock and pg_advisory_unlock.
 - [ ] **Phase 12: Transactional Repository with REPEATABLE READ & CAS Writes** — Implement consistent store stream reads and atomic compare-and-swap (CAS) transactions updating store_stock, apply_log, and sync_store_state.
@@ -81,4 +81,11 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - **Summary**: Advance a leased store through multiple ready updates per pass by stepping StoreStreamSnapshot in memory after each CAS commit.
 - **Files Composed**:
   - `src/StockStream.Application/Services/StoreBacklogAdvancer.cs`
+
+### Phase 9: WorkerEngine Poll Loop & 4-Process FleetSupervisor
+- **Commit**: `feat(phase-9): implement WorkerEngine poll loop and 4-process FleetSupervisor with auto-restart`
+- **Summary**: Implement non-blocking store lease round-robin in WorkerEngine and 4-OS-process FleetSupervisor with crash auto-restart.
+- **Files Composed**:
+  - `src/StockStream.Application/Services/WorkerEngine.cs`
+  - `src/StockStream.Application/Services/FleetSupervisor.cs`
 
