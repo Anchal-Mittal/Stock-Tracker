@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>StockStream.Infrastructure</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Npgsql" Version="8.0.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StockStream.Domain\StockStream.Domain.csproj" />
+    <ProjectReference Include="..\StockStream.Application\StockStream.Application.csproj" />
+  </ItemGroup>
+</Project>

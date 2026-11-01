@@ -13,7 +13,7 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - [x] **Phase 7: Application Options & Structured Logging** — Add environment/CLI configuration binding in ProcessorOptions and structured JSON/console logging in ConsoleSyncLogger.
 - [x] **Phase 8: StoreBacklogAdvancer Use Case** — Advance a leased store through multiple ready updates per pass by stepping StoreStreamSnapshot in memory after each CAS commit.
 - [x] **Phase 9: WorkerEngine Poll Loop & 4-Process FleetSupervisor** — Implement non-blocking store lease round-robin in WorkerEngine and 4-OS-process FleetSupervisor with crash auto-restart.
-- [ ] **Phase 10: Unpooled Npgsql Session & Idempotent Schema Migrator** — Bind each worker to a dedicated physical TCP connection (Pooling = false) and run idempotent additive DDL migrations under an advisory lock.
+- [x] **Phase 10: Unpooled Npgsql Session & Idempotent Schema Migrator** — Bind each worker to a dedicated physical TCP connection (Pooling = false) and run idempotent additive DDL migrations under an advisory lock.
 - [ ] **Phase 11: PostgreSQL Session-Level Advisory Lease Adapter** — Implement non-blocking per-store advisory locking via pg_try_advisory_lock and pg_advisory_unlock.
 - [ ] **Phase 12: Transactional Repository with REPEATABLE READ & CAS Writes** — Implement consistent store stream reads and atomic compare-and-swap (CAS) transactions updating store_stock, apply_log, and sync_store_state.
 - [ ] **Phase 13: Unified CLI, 7-Invariant Verifier & Hostile Chaos Suite** — Wire DI composition root in Program.cs and build GroundTruthVerifier (7 invariants) and ChaosSuiteRunner (mid-txn kills + poison payloads + skip-to-snapshot).
@@ -88,4 +88,12 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - **Files Composed**:
   - `src/StockStream.Application/Services/WorkerEngine.cs`
   - `src/StockStream.Application/Services/FleetSupervisor.cs`
+
+### Phase 10: Unpooled Npgsql Session & Idempotent Schema Migrator
+- **Commit**: `feat(phase-10): add unpooled PostgresSession and advisory-locked PostgresSchemaMigrator`
+- **Summary**: Bind each worker to a dedicated physical TCP connection (Pooling = false) and run idempotent additive DDL migrations under an advisory lock.
+- **Files Composed**:
+  - `src/StockStream.Infrastructure/StockStream.Infrastructure.csproj`
+  - `src/StockStream.Infrastructure/Persistence/PostgresSession.cs`
+  - `src/StockStream.Infrastructure/Persistence/PostgresSchemaMigrator.cs`
 
