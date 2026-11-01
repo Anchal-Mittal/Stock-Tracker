@@ -18,7 +18,7 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - [x] **Phase 12: Transactional Repository with REPEATABLE READ & CAS Writes** — Implement consistent store stream reads and atomic compare-and-swap (CAS) transactions updating store_stock, apply_log, and sync_store_state.
 - [x] **Phase 13: Unified CLI, 7-Invariant Verifier & Hostile Chaos Suite** — Wire DI composition root in Program.cs and build GroundTruthVerifier (7 invariants) and ChaosSuiteRunner (mid-txn kills + poison payloads + skip-to-snapshot).
 - [x] **Phase 14: xUnit Domain & Application Unit Test Suite** — Add 12 fast, database-free xUnit tests covering out-of-order seqs, duplicates, pending/failed receipts, poison payloads, and skip-to-snapshot recovery.
-- [ ] **Phase 15: Architecture Documentation, Risk Analysis & AI Usage Report** — Complete deliverables with one-command run instructions (README.md), 12-risk failure analysis (DESIGN.md), and transparent AI usage report (AI-USAGE.md).
+- [x] **Phase 15: Architecture Documentation, Risk Analysis & AI Usage Report** — Complete deliverables with one-command run instructions (README.md), 12-risk failure analysis (DESIGN.md), and transparent AI usage report (AI-USAGE.md).
 
 ## Completed Phase Details
 
@@ -124,4 +124,12 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - **Files Composed**:
   - `tests/StockStream.Tests/StockStream.Tests.csproj`
   - `tests/StockStream.Tests/StoreStreamPlannerTests.cs`
+
+### Phase 15: Architecture Documentation, Risk Analysis & AI Usage Report
+- **Commit**: `docs(phase-15): add README.md, DDD/SOLID architecture & risk analysis (DESIGN.md), and AI-USAGE.md`
+- **Summary**: Complete deliverables with one-command run instructions (README.md), 12-risk failure analysis (DESIGN.md), and transparent AI usage report (AI-USAGE.md).
+- **Files Composed**:
+  - `README.md`
+  - `DESIGN.md`
+  - `AI-USAGE.md`
 
