@@ -7,7 +7,7 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - [x] **Phase 1: Starter Infrastructure & Ignore Rules** — Initialize repository with unmodified assignment starter files and strict .gitignore excluding bin/, obj/, and node_modules/.
 - [x] **Phase 2: .NET 8 Solution & DRY Build Configuration** — Create StockStream.sln and centralized Directory.Build.props (net8.0, C# 12, ImplicitUsings, Nullable).
 - [x] **Phase 3: Domain Value Objects & Enumerations** — Add StoreIdentity with deterministic FNV-1a 64-bit advisory lock key derivation and UpdateKind/ReceiptStatus/WorkerStopReason enums.
-- [ ] **Phase 4: Domain Entities & Discriminated Union Decisions** — Model immutable store update stream entities and exhaustive SyncDecision discriminated union (Idle, WaitForReceipt, SkipBrokenSeq, ApplyUpdate).
+- [x] **Phase 4: Domain Entities & Discriminated Union Decisions** — Model immutable store update stream entities and exhaustive SyncDecision discriminated union (Idle, WaitForReceipt, SkipBrokenSeq, ApplyUpdate).
 - [ ] **Phase 5: Pure Domain Stream Planner Service** — Implement zero-I/O StoreStreamPlanner enforcing contiguous seq progression, duplicate ignoring, receipt readiness checks, and skip-to-snapshot recovery.
 - [ ] **Phase 6: Segregated Domain Ports (ISP & DIP)** — Define IStoreLeaseManager, ISchemaMigrator, IStoreSyncRepository, and ISyncLogger interfaces in StockStream.Domain.Ports.
 - [ ] **Phase 7: Application Options & Structured Logging** — Add environment/CLI configuration binding in ProcessorOptions and structured JSON/console logging in ConsoleSyncLogger.
@@ -47,4 +47,11 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
   - `src/StockStream.Domain/StockStream.Domain.csproj`
   - `src/StockStream.Domain/ValueObjects/StoreIdentity.cs`
   - `src/StockStream.Domain/ValueObjects/Enumerations.cs`
+
+### Phase 4: Domain Entities & Discriminated Union Decisions
+- **Commit**: `feat(phase-4): model QueuedUpdate, SkippedUpdate, StoreStreamSnapshot, and SyncDecision union`
+- **Summary**: Model immutable store update stream entities and exhaustive SyncDecision discriminated union (Idle, WaitForReceipt, SkipBrokenSeq, ApplyUpdate).
+- **Files Composed**:
+  - `src/StockStream.Domain/Entities/StoreStreamEntities.cs`
+  - `src/StockStream.Domain/Decisions/SyncDecision.cs`
 
