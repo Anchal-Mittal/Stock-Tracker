@@ -8,7 +8,7 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - [x] **Phase 2: .NET 8 Solution & DRY Build Configuration** — Create StockStream.sln and centralized Directory.Build.props (net8.0, C# 12, ImplicitUsings, Nullable).
 - [x] **Phase 3: Domain Value Objects & Enumerations** — Add StoreIdentity with deterministic FNV-1a 64-bit advisory lock key derivation and UpdateKind/ReceiptStatus/WorkerStopReason enums.
 - [x] **Phase 4: Domain Entities & Discriminated Union Decisions** — Model immutable store update stream entities and exhaustive SyncDecision discriminated union (Idle, WaitForReceipt, SkipBrokenSeq, ApplyUpdate).
-- [ ] **Phase 5: Pure Domain Stream Planner Service** — Implement zero-I/O StoreStreamPlanner enforcing contiguous seq progression, duplicate ignoring, receipt readiness checks, and skip-to-snapshot recovery.
+- [x] **Phase 5: Pure Domain Stream Planner Service** — Implement zero-I/O StoreStreamPlanner enforcing contiguous seq progression, duplicate ignoring, receipt readiness checks, and skip-to-snapshot recovery.
 - [ ] **Phase 6: Segregated Domain Ports (ISP & DIP)** — Define IStoreLeaseManager, ISchemaMigrator, IStoreSyncRepository, and ISyncLogger interfaces in StockStream.Domain.Ports.
 - [ ] **Phase 7: Application Options & Structured Logging** — Add environment/CLI configuration binding in ProcessorOptions and structured JSON/console logging in ConsoleSyncLogger.
 - [ ] **Phase 8: StoreBacklogAdvancer Use Case** — Advance a leased store through multiple ready updates per pass by stepping StoreStreamSnapshot in memory after each CAS commit.
@@ -54,4 +54,11 @@ This document tracks the incremental, phase-by-phase composition of the **StockS
 - **Files Composed**:
   - `src/StockStream.Domain/Entities/StoreStreamEntities.cs`
   - `src/StockStream.Domain/Decisions/SyncDecision.cs`
+
+### Phase 5: Pure Domain Stream Planner Service
+- **Commit**: `feat(phase-5): implement pure StoreStreamPlanner for causal ordering, dedup, and poison recovery`
+- **Summary**: Implement zero-I/O StoreStreamPlanner enforcing contiguous seq progression, duplicate ignoring, receipt readiness checks, and skip-to-snapshot recovery.
+- **Files Composed**:
+  - `src/StockStream.Domain/Services/IStoreStreamPlanner.cs`
+  - `src/StockStream.Domain/Services/StoreStreamPlanner.cs`
 
