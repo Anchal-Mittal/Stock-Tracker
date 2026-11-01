@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>StockStream.Cli</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StockStream.Domain\StockStream.Domain.csproj" />
+    <ProjectReference Include="..\StockStream.Application\StockStream.Application.csproj" />
+    <ProjectReference Include="..\StockStream.Infrastructure\StockStream.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>
